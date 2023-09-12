@@ -25,10 +25,10 @@ class MinerGame:
         return mines_cells, empty_cells
 
     def translate_cell(self, cell):
-        return [int(cell[0]), self.alphabet.index(cell[1].upper())]
+        return [int(cell[:-1]), self.alphabet.index(cell[-1].upper())]
 
     def retranslate_cell(self, cell):
-        return f'{cell[0]}{self.alphabet[1]}'
+        return f'{cell[:-1]}{self.alphabet[-1]}'
 
     def print_field(self, empty, found_mines):
         print(''.join('  ' + letter for letter in self.alphabet[0:self.width]))
@@ -60,7 +60,7 @@ class MinerGame:
         return [mine_cells, empty_cells]
 
 
-new_game = MinerGame(10, 10, 2)
+new_game = MinerGame(26, 26, 100)
 
 field = new_game.create_field()
 print(field)
